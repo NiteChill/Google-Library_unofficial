@@ -1,0 +1,58 @@
+.segment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 6.25rem;
+  user-select: none;
+  cursor: pointer;
+  & .icon_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    & .state_layer {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      border-radius: inherit;
+      & .badge_container {
+        position: absolute;
+      }
+      & .state_overlay {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-radius: 6.25rem;
+        opacity: 0;
+        transition: height 0.2s cubic-bezier(0.2, 0, 0, 1),
+          width 0.2s cubic-bezier(0.2, 0, 0, 1),
+          opacity 0.1s cubic-bezier(0.2, 0, 0, 1);
+        background: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+      }
+    }
+  }
+}
+
+.segment:hover .active {
+  background: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 8%,
+    transparent
+  );
+}
+
+.segment:hover .inactive {
+  background: color-mix(
+    in srgb,
+    var(--md-sys-color-on-secondary-container) 8%,
+    transparent
+  );
+}

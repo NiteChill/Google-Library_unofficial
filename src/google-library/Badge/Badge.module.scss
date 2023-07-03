@@ -1,0 +1,18 @@
+.badge_small {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 6.25rem;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.badge_large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6.25rem;
+  width: 1rem;
+  height: 1rem;
+  user-select: none;
+  cursor: context-menu;
+}

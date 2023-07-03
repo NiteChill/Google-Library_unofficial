@@ -1,0 +1,119 @@
+.icon_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  min-height: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+}
+
+.state_overlay {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0.08;
+  border-radius: 6.25rem;
+  transition: height 0.2s cubic-bezier(0.2, 0, 0, 1),
+    width 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.container_standard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6.25rem;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  & .state_layer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--md-sys-color-on-surface-variant);
+    &:hover {
+      background: color-mix(
+        in srgb,
+        var(--md-sys-color-on-surface-variant) 8%,
+        transparent
+      );
+    }
+  }
+}
+
+.container_filled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6.25rem;
+  overflow: hidden;
+  background: var(--md-sys-color-primary);
+  cursor: pointer;
+  user-select: none;
+  & .state_layer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--md-sys-color-on-primary);
+    &:hover {
+      background: color-mix(
+        in srgb,
+        var(--md-sys-color-on-primary) 8%,
+        transparent
+      );
+    }
+  }
+}
+
+.container_tonal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6.25rem;
+  overflow: hidden;
+  background: var(--md-sys-color-secondary-container);
+  cursor: pointer;
+  user-select: none;
+  & .state_layer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--md-sys-color-on-secondary-container);
+    &:hover {
+      background: color-mix(
+        in srgb,
+        var(--md-sys-color-on-secondary) 8%,
+        transparent
+      );
+    }
+  }
+}
+
+.container_outlined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6.25rem;
+  overflow: hidden;
+  border: 1px solid var(--md-sys-color-outline);
+  cursor: pointer;
+  user-select: none;
+  & .state_layer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--md-sys-color-on-surface-variant);
+    &:hover {
+      background: color-mix(
+        in srgb,
+        var(--md-sys-color-on-surface-variant) 8%,
+        transparent
+      );
+    }
+  }
+}

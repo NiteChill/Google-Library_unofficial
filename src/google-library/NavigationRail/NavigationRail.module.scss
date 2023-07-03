@@ -1,0 +1,30 @@
+.navigation_rail {
+  display: flex;
+  width: 5rem;
+  height: 100%;
+  padding: 2.75rem 0rem 3.5rem 0rem;
+  flex-direction: column;
+  gap: 2.5rem;
+  & .menu_and_fab {
+    display: flex;
+    width: inherit;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    & .fab_elevation_override {
+      display: flex;
+      align-items: center;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+  }
+  & .destinations {
+    display: flex;
+    width: 5rem;
+    padding: 0.3125rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
