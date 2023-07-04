@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import IconButton from '../IconButton/IconButton';
+import { IconButton, ListItem } from '../index';
 import styles from './Search.module.scss';
 
 export default function ({
@@ -46,7 +46,9 @@ export default function ({
   }, [open]);
   return (
     <>
-      {open && fullscreen && <div className={styles.fullscreen_placeholder}></div>}
+      {open && fullscreen && (
+        <div className={styles.fullscreen_placeholder}></div>
+      )}
       {open && (
         <div className={styles.backdrop} onClick={() => setOpen(false)}></div>
       )}
@@ -130,7 +132,9 @@ export default function ({
             </div>
           </div>
           <div className={styles.divider}></div>
-          <div className={styles.list} ref={listRef}></div>
+          <div className={styles.list} ref={listRef}>
+            <ListItem avatar={true} />
+          </div>
         </div>
       </div>
     </>
