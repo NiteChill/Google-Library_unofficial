@@ -7,8 +7,31 @@ export default function FABs({
   icon = 'edit',
   label = 'Label',
 }) {
-  const stateOverlayRef = useRef(null);
-  const stateLayerRef = useRef(null);
+  const stateOverlayRef = useRef(null),
+    stateLayerRef = useRef(null),
+    handleClick = (clickState, e) => {
+      if (clickState === 'pressed') {
+        const boundingRect = e.target.getBoundingClientRect();
+        stateOverlayRef.current.style.transition =
+          'height 0.2s cubic-bezier(0.2, 0, 0, 1), width 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.1s cubic-bezier(0.2, 0, 0, 1)';
+        stateOverlayRef.current.style.height = '180%';
+        stateOverlayRef.current.style.width = '180%';
+        stateOverlayRef.current.style.opacity = '0.12';
+        stateOverlayRef.current.style.margin = `${
+          e.clientY - boundingRect.height / 2 - boundingRect.top
+        }px 0 0 ${e.clientX - boundingRect.width / 2 - boundingRect.left}px`;
+      } else {
+        stateOverlayRef.current.style.transition =
+          'height 0.01s cubic-bezier(0.2, 0, 0, 1), width 0.01s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s cubic-bezier(0.2, 0, 0, 1)';
+        stateOverlayRef.current.style.height = '180%';
+        stateOverlayRef.current.style.width = '180%';
+        stateOverlayRef.current.style.opacity = '0';
+        window.setTimeout(() => {
+          stateOverlayRef.current.style.height = '0';
+          stateOverlayRef.current.style.width = '0';
+        }, 400);
+      }
+    };
   return (
     <div
       className={`${styles.FAB} ${
@@ -24,7 +47,7 @@ export default function FABs({
             ? '1.75rem'
             : '1rem',
       }}
-      onMouseDown={() => {
+      onMouseDown={(e) => {
         if (style === 'extended') {
           stateLayerRef.current.style.background = `color-mix(in srgb, var(${
             color === 'surface'
@@ -32,18 +55,14 @@ export default function FABs({
               : '--md-sys-color-on-' + color + '-container'
           }) 12%, transparent)`;
         } else {
-          stateOverlayRef.current.style.opacity = '0.12';
-          stateOverlayRef.current.style.width = '260%';
-          stateOverlayRef.current.style.height = '260%';
+          handleClick('pressed', e);
         }
       }}
-      onMouseUp={() => {
+      onMouseUp={(e) => {
         if (style === 'extended') {
           stateLayerRef.current.style.background = '';
         } else {
-          stateOverlayRef.current.style.opacity = '0';
-          stateOverlayRef.current.style.width = '0';
-          stateOverlayRef.current.style.height = '0';
+          handleClick('released', e);
         }
       }}
       onTouchStart={() => {
@@ -54,18 +73,28 @@ export default function FABs({
               : '--md-sys-color-on-' + color + '-container'
           }) 12%, transparent)`;
         } else {
-          stateOverlayRef.current.style.opacity = '0.12';
-          stateOverlayRef.current.style.width = '260%';
-          stateOverlayRef.current.style.height = '260%';
+          handleClick('pressed', e);
         }
       }}
       onTouchEnd={() => {
         if (style === 'extended') {
           stateLayerRef.current.style.background = '';
         } else {
-          stateOverlayRef.current.style.opacity = '0';
-          stateOverlayRef.current.style.width = '0';
-          stateOverlayRef.current.style.height = '0';
+          handleClick('released', e);
+        }
+      }}
+      onTouchCancel={(e) => {
+        if (style === 'extended') {
+          stateLayerRef.current.style.background = '';
+        } else {
+          handleClick('released', e);
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (style === 'extended') {
+          stateLayerRef.current.style.background = '';
+        } else {
+          handleClick('released', e);
         }
       }}
     >

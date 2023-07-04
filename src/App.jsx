@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import './default.scss';
-import { Search } from './google-library';
+import { Search, FABs } from './google-library';
 
 export default function App() {
   const navigate = useNavigate();
@@ -8,6 +8,7 @@ export default function App() {
     <div className='App'>
       <div className='main'>
         <Search fullscreenMinSize={500} />
+        <FABs />
         <Outlet />
       </div>
     </div>

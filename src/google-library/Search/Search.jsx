@@ -46,12 +46,13 @@ export default function ({
   }, [open]);
   return (
     <>
+      {open && fullscreen && <div className={styles.fullscreen_placeholder}></div>}
       {open && (
         <div className={styles.backdrop} onClick={() => setOpen(false)}></div>
       )}
       <div className={styles.container} style={fullscreenContainerStyle}>
         <div
-          className={styles.search}
+          className={`${styles.search} ${fullscreenContainerStyle}`}
           ref={searchRef}
           style={{
             height:
