@@ -28,8 +28,6 @@ export default function ({
         setFullscreen(true);
         setFullscreenContainerStyle({
           position: 'absolute',
-          top: '0',
-          left: '0',
           width: '100%',
           height: '100%',
         });
@@ -89,7 +87,9 @@ export default function ({
                   onFocus={() => setOpen(true)}
                   onInput={(e) => {
                     setInputValue(e.target.value);
-                    !fullscreen && (searchRef.current.style.height = 'auto');
+                    !fullscreen &&
+                      (searchRef.current.style.height =
+                        (listRef.current.offsetHeight + 1) / 16 + 3.5 + 'rem');
                   }}
                 />
               </div>
@@ -133,6 +133,8 @@ export default function ({
           </div>
           <div className={styles.divider}></div>
           <div className={styles.list} ref={listRef}>
+            <ListItem avatar={true} />
+            <ListItem avatar={true} />
             <ListItem avatar={true} />
           </div>
         </div>

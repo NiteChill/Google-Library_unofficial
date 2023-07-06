@@ -22,10 +22,14 @@ export default function ListItem({
           )}
         </div>
         <div className={styles.content}>
-          <p className={`${styles.headline} body-large on-surface-text`}>{headline}</p>
+          <p className={`${styles.headline} body-large on-surface-text`}>
+            {headline}
+          </p>
           <p
             className={`${styles.supporting_text} body-medium on-surface-variant-text`}
-          >{supportingText}</p>
+          >
+            {supportingText}
+          </p>
         </div>
         <div className={styles.trailing_element}></div>
       </div>
